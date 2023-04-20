@@ -19,8 +19,8 @@
   characters between the quotes.
 - A sequence of characters in double quotes, like "hello, world\n", is called a
   character string or string constant.
-- The sequence `\n` in the string in C notation for the newline character, which
-  when printed advances the output to the left margin on the next line.
+- The sequence `\n` in the string in C notation for the newline character,
+  which when printed advances the output to the left margin on the next line.
 - `printf` never supplies a newline automatically, so several calls may be used
   to build up an output line in states.
 - `\n` represents only a single character. An escape sequence like \n provides
@@ -91,3 +91,102 @@
 - In `printf`, width and precision may be omitted from a specification.
 - `printf` also recognizes `%o` for octal, `%x` for hexadecimal, `%c` for
   character, `%s` for character string and `%%` for % itself.
+
+## 1.3 The For Statement
+
+- In any context where it is permissible to use the value of a variable of some
+  time, it is also permissible to use a more complicated expression of that
+  type.
+- The `for` statement is a loop, a generalization of the `while` statement.
+- A `for` loop has three parts within the parentheses. The first part, the
+  initialization is done once, before the loop proper is entered. The second
+  part is the test or condition that controls the loop. This condition is
+  evaluated if it is true, the body of the loop is executed. Then the increment
+  step is executed, and the condition re-evaluated. The loop terminates if the
+  condition becomes false.
+- The choice between while and for is arbitrary, based on which seems clearer.
+- The `for` is usually appropriate for loops in which the initialization and
+  increment are single statements and logically related, since it is more
+  compact than while and it keeps the loop control statements together in one
+  place.
+
+## 1.4 Symbolic Constants
+
+- It's bad practice to bury "magic numbers" in a program; they convey little
+  information to someone who might have to read the program later, and they are
+  hard to change in a systematic way.
+- A `#define` line defines a symbolic name or symbolic constant to be a
+  particular string of characters. Any occurrence of the name will be replaced
+  by the corresponding replacement text. The name has the same form as a
+  variable name: a sequence of letters and digits that begins with a letter.
+  The replacement text can be any sequence of characters; is not limited to
+  numbers.
+- Symbolic constant names are conventionally written in upper case so they can
+  be readily distinguished from lower case variable names.
+- There is no semicolon at the end of a `#define` line.
+
+## 1.5 Character Input and Output
+
+- text input or output, regardless of where it originates or where it goes to
+  is dealt with as streams of characters. A text stream is a sequence of
+  characters divided into lines; each line consists of zero or more characters
+  followed by a newline character.
+- `getchar` reads the next input character from a text stream and returns that
+  as its value.
+- `putchar` prints a character each time it is called.
+- The relational operator `!=` means "not equal to".
+- What appears to be a character on the keyboard on screen is of course, like
+  everything else, stored internally just as a bit pattern.
+- The type `char` is specifically meant for storing such character data, but
+  any integer type can be used.
+- `getchar` returns a distinctive value when there is no more input, a value
+  that cannot be confused with any real character. This value is called `EOF`,
+  for "end of file".
+- EOF is an integer defined in `<stdio.h>`, but the specific numeric value
+  doesn't matter as long as it is not the same as any char value. By using the
+  symbolic constant, we are assured that nothing in the program depends on
+  specific numeric value.
+- In C, any assignment is an expression and has a value, which is the value of
+  the left hand side after the assignment.
+- An assignment can appear as part of a larger expression.
+- The precedence of `!=` is higher than that of `=`.
+- The `++` operator means increment by one.
+- `--` means decrement by one.
+- The operators `++` and `--` can be either prefix operators or postfix; these
+  two forms have different values in expressions.
+- `long` integers are at least 32 bits.
+- On some machines, `int` and `long` are the same size, on others an int is 16
+  bits, with a maximum value of 32767, and it would take relatively little
+  input to overflow an `int` counter.
+- `%ld` tells `printf` that the corresponding argument is a long integer.
+- `double` is a double precision float.
+- `printf` uses `%f` for both `float` and `double`.
+- `%0.f` suppresses printing of the decimal point and the fraction part.
+- Grammatical rules of C require that a for statement have a body. If none is
+  required, the isolated semicolon, called a null statement, is there to
+  satisfy that requirement. It is put on a separate line to make it visible.
+- `while` and `for` loops test at the top of the loop, before proceeding with
+  the body. If there is nothing to do, nothing is done, even if that means
+  never going through the loop body.
+- Programs should act intelligently when given zero-length input.
+- The `while` and `for` statements help ensure that programs do reasonable
+  things with boundary conditions.
+- The `==` is C notion for "is equal to".
+- A character written between single quotes represents an integer value equal
+  to the numerical value of the character in the machine's character set. It
+  is called a character constant, although it is just another way to write a
+  small integer.
+- The escape sequences used in string constants are also legal in character
+  constants, so `'\n'` stands for the value of the newline character, which is
+  `10` in ASCII.
+- `'\n'` is a single character and in expressions is just an integer; on the
+  other hand `"\n"` is a string constant that happens to contain only one
+  character.
+- Multiple variables can be assigned the same value as `a = b = c = 0`.
+- The operator `||` means OR and `&&` means AND. `&&` has a higher precedence
+  than `||`.
+- Expressions connected by `&&` or `||` are evaluated left to right, and it is
+  guaranteed that evaluation will stop as soon as the truth or falsehood is
+  known.
+- `else` species an alternative action if the condition part of an `if`
+  statement is false.
