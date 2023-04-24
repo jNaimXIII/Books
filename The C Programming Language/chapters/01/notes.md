@@ -127,7 +127,7 @@
 
 ## 1.5 Character Input and Output
 
-- text input or output, regardless of where it originates or where it goes to
+- Text input or output, regardless of where it originates or where it goes to
   is dealt with as streams of characters. A text stream is a sequence of
   characters divided into lines; each line consists of zero or more characters
   followed by a newline character.
@@ -190,3 +190,57 @@
   known.
 - `else` species an alternative action if the condition part of an `if`
   statement is false.
+
+## 1.6 Arrays
+
+- The declaration `int n[10]` declares `n` to be an array of 10 integers.
+- Array subscripts always start at zero in C.
+- A subscript can be any integer expression, which includes integer variables
+  and integer constants.
+- By definition, `char`s are just small integers, so `char` variable and
+  constants are identical to `int`s in arithmetic expressions.
+- In conditional statements the conditions are evaluated in order from the top
+  until some condition is satisfied; at that point the corresponding statement
+  part is executed, and the entire construction is finished.
+- If none of the conditions are satisfied, the statement after the final else
+  is executed if present. If the final else and statement are omitted, no
+  action takes place.
+- There can be any number of `else if (condition) statement` groups between the
+  initial `if` and the final `else`.
+
+## 1.7 Functions
+
+- A function provides a convenient way to encapsulate some computation, which
+  can then be used without worrying about its implementation.
+- With properly designed functions, it is possible to ignore how a job is done;
+  knowing what is done is sufficient.
+- C has no exponentiation operator.
+- Function definitions can appear in any order, and in one source file or
+  several, although no function can be split between files.
+- We generally use "parameter" for a variable named in the parenthesized list
+  in a function definition, and "argument" for the value used in a call of the
+  function. The terms "formal argument" and "actual argument" are also used.
+- The `return` statement is used to return a value from a function.
+- A function need not return a value; a return statement with no expression
+  causes control, but no useful value, to be returned to the caller, as does
+  "falling off the end" of a function by reaching the terminating right brace.
+- The calling function can ignore a value returned by a function.
+- A return value of zero implies normal termination; non-zero values signal
+  unusual or erroneous termination conditions.
+- The "function prototype" declaration has to agree with the definition and
+  uses of the function declaration.
+- Well-chosen names are good documentation.
+
+## 1.8 Arguments - Call by Value
+
+- In C, all function arguments are passed "by value".
+- The called function cannot directly alter a variable in the calling function;
+  it can only alter its private, temporary copy.
+- When necessary, it is possible to arrange for a function to modify a variable
+  in a calling routine. The caller must provide the address of the variable to
+  be set, and the called function must declare the parameter to be a pointer
+  and access the variable indirectly through it.
+- When the name of an array is used as an argument, the value passed to the
+  function in the location or address of the beginning of the array - there is
+  no copying of array elements. By subscripting this value, the function can
+  access and alter any element of the array.
