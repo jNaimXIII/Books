@@ -244,3 +244,48 @@
   function in the location or address of the beginning of the array - there is
   no copying of array elements. By subscripting this value, the function can
   access and alter any element of the array.
+
+## 1.9 Character Arrays
+
+- `\0` is the null character whose value is 0.
+- `%s` format specification in `printf` expects a `char[]` ending in a `\0`.
+
+## 1.10 External Variables and Scope
+
+- Variables that come into existence when a function is called and disappear
+  when the function exits are called automatic variables.
+- It is possible to define variables that are external to all functions, that is
+  , variables that can be accessed by name by any function.
+- External variables are globally accessible, they can be used instead of
+  argument lists to communicate data between functions.
+- External variables remain in existence permanently, rather than appearing and
+  disappearing as functions are called and exited, they retain their values even
+  after the functions that set them have returned.
+- An external variable must be defined, exactly once, outside any function;
+  this sets aside storage for it. The variable must also be declared in each
+  function that wants to access it; this states the type of the variable.
+- The declaration may be an explicit `extern` statement or may be implicit from
+  context.
+- Before a function can use an external variable, the name of the variable must
+  be made known to the function. One way to do this is to write an `extern`
+  declaration in the function; the declaration is the same as before except for
+  the added keyword `extern`.
+- In certain circumstances, the `extern` declaration can be omitted. If the
+  definition of an external variable occurs in the source file before its use in
+  a particular function, then there is no need for an external declaration in
+  the function.
+- Common practice is to place definitions of all external variables at the
+  beginning of the source file, and then omit all `extern` declarations.
+- The usual practice is to collect `extern` declarations of variables and
+  functions in a separate file, historically called a `header`, that is included
+  by `#include` at the front of each source file. The suffix `.h` is
+  conventional for header names.
+- The functions of the standard library, for example, are declared in headers
+  like `<stdio.h>`.
+- "Definition" refers to the place where the variable is called or assigned
+  storage; "declaration" refers to places where the nature of the variable is
+  stated but no storage is allocated.
+- Relying too heavily on external variables is fraught with peril since it leads
+  to programs whose data connections are not at all obvious -- variables can be
+  changed in unexpected and even inadvertent ways, and the program is hard to
+  modify.
