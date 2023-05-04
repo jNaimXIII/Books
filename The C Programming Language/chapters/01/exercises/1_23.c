@@ -3,6 +3,7 @@
 #define IN 1
 #define OUT 0
 
+/* remove comments from c programs */
 main()
 {
     int c;

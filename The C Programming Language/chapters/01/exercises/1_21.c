@@ -2,6 +2,7 @@
 
 #define TABSTOP 2
 
+/* convert spaces into tabs */
 main()
 {
     int c, i, spaces;
